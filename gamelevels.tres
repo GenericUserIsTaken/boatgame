@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="GameLevels" load_steps=8 format=3 uid="uid://fcitjywg4edh"]
+
+[ext_resource type="Script" uid="uid://bnlgkwbhif42b" path="res://level_data.gd" id="1_ipvlf"]
+[ext_resource type="Script" uid="uid://dgovintrrqr5i" path="res://GameLevels.gd" id="2_sbglp"]
+
+[sub_resource type="Resource" id="Resource_sbglp"]
+script = ExtResource("1_ipvlf")
+metadata/_custom_type_script = "uid://bnlgkwbhif42b"
+
+[sub_resource type="Resource" id="Resource_1kutu"]
+script = ExtResource("1_ipvlf")
+metadata/_custom_type_script = "uid://bnlgkwbhif42b"
+
+[sub_resource type="Resource" id="Resource_ldqfn"]
+script = ExtResource("1_ipvlf")
+metadata/_custom_type_script = "uid://bnlgkwbhif42b"
+
+[sub_resource type="Resource" id="Resource_t37pp"]
+script = ExtResource("1_ipvlf")
+metadata/_custom_type_script = "uid://bnlgkwbhif42b"
+
+[sub_resource type="Resource" id="Resource_cqj0k"]
+script = ExtResource("1_ipvlf")
+metadata/_custom_type_script = "uid://bnlgkwbhif42b"
+
+[resource]
+script = ExtResource("2_sbglp")
+levels = Array[ExtResource("1_ipvlf")]([SubResource("Resource_sbglp"), SubResource("Resource_1kutu"), SubResource("Resource_ldqfn"), SubResource("Resource_t37pp"), SubResource("Resource_cqj0k")])
