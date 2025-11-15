@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://m8h38nxbg0ff"]
+
+[node name="TrashManager" type="Node2D"]
+
+[node name="SurfaceTrash" type="Node2D" parent="."]
+
+[node name="ClumpTrashFolder" type="Node2D" parent="."]
