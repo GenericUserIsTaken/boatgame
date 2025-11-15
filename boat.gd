@@ -7,30 +7,26 @@ func _ready() -> void:
 	
 
 
-func _process(delta:):
+func _physics_process(delta:):
 	gravity_scale = 0
-	var accelaration = 2
+	var accelaration = 20
 	var speed = accelaration * 2
 	var MaxSpeed = 200
-	var friction = 2 * speed
-	var direction = Input.get_vector("left", "right", "up", "down")
-	if Input.is_action_pressed("ui_right"):
-		if direction.length() > 0:
-			speed = direction.normalized() * speed
-		else:
-			speed = direction.normalized() - friction
-	if Input.is_action_pressed("ui_left"):
-		if direction.length() > 0:
-			speed = direction.normalized() * speed
-		else:
-			speed = direction.normalized() - friction
-	if Input.is_action_pressed("ui_up"):
-		if direction.length() > 0:
-			speed = direction.normalized() * speed
-		else:
-			speed = direction.normalized() - friction
-	if Input.is_action_pressed("ui_down"):
-		if direction.length() > 0:
-			speed = direction.normalized() * speed
-		else:
-			speed = direction.normalized() - friction
+	var friction = 4 * speed
+	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	
+	if direction.length() > 0:
+		#current speed, float:   self.linear_velocity.length()
+		#current direcition, vector2:   self.linear_velocity.normalized()
+		self.apply_force( direction.normalized() * speed)
+	elif (self.linear_velocity.length() > friction):
+		pass
+		#self.apply_force( direction.normalized() * friction)
+		#self.apply_force( (-self.linear_velocity.normalized()) * friction)
+	elif (self.linear_velocity.length() < friction):
+		self.apply_force(-self.linear_velocity)
+		#get our current velocity
+		#get the opposite direction of our current movement
+		#if friction force is greater than current velocity speed apply current velocity speed in opposie direction
+		#else apply a friction force in the opposite direction of current velocity 
+	#self.apply_central_force(speed)
