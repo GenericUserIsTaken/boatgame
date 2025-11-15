@@ -14,9 +14,9 @@ var currentLevelIndex : int = 0
 var shopLock : bool = true
 
 ### UI VISIBILITY SIGNALS
-signal ChangeGameUIVisibility (Visbile : bool)
-signal ChangeTransitionUIVisibility (Visbile : bool)
-signal ChangeShopUIVisibility (Visbile : bool)
+signal ChangeGameUIVisibility (Visbile : bool, gamedata : LevelData)
+signal ChangeTransitionUIVisibility (Visbile : bool, gamedata : LevelData)
+signal ChangeShopUIVisibility (Visbile : bool, gamedata : LevelData)
 
 ### LEVEL SETUP
 signal ResetLevel ()

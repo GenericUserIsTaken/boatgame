@@ -7,11 +7,13 @@ extends Resource
 @export var RoundTime : float = 60.0
 @export var TrashAmount : int = 15
 @export var DrawTrashBackground : bool = false
+@export var facts : String = "fun facts"
 
-func _init(year = 1950, bargraphsize=0.0, bargraphtext = "100 metric tons", roundtime = 60.0, trashamount = 15, drawtrashbg = false):
+func _init(year = 1950, bargraphsize=0.0, bargraphtext = "100 metric tons", roundtime = 60.0, trashamount = 15, drawtrashbg = false, facts = "fun facts"):
 	self.Year = year
 	self.BarGraphSize = bargraphsize
 	self.BarGraphText = bargraphtext
 	self.RoundTime = roundtime
 	self.TrashAmount = trashamount
 	self.DrawTrashBackground = drawtrashbg
+	self.facts = facts
