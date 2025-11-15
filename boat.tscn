@@ -1,8 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://brpb3psj6iwg8"]
+[gd_scene load_steps=4 format=3 uid="uid://brpb3psj6iwg8"]
 
-[ext_resource type="Script" uid="uid://cttb4irkjhphw" path="res://boat.gd" id="1_annr2"]
+[ext_resource type="Script" path="res://boat.gd" id="1_annr2"]
+[ext_resource type="Texture2D" uid="uid://d2n0uhbaedv5s" path="res://icon.svg" id="2_l0x5q"]
 
-[node name="Boat" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_5l8l2"]
+
+[node name="Boat" type="RigidBody2D"]
 script = ExtResource("1_annr2")
 
-[node name="ShapeCast2D" type="ShapeCast2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5l8l2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_l0x5q")
