@@ -1,6 +1,7 @@
 extends RigidBody2D
 @onready var Pivot = $Pivot
 @onready var ScoopCollider = $Pivot/Area2D/ScoopCollider
+@onready var boat = $"."
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -8,16 +9,34 @@ func _ready() -> void:
 	
 	
 func _physics_process(delta:):
+	#flips sprite
+	if (self.linear_velocity.x > 0):
+		#print(self.linear_velocity.x)
+		$Pivot/Sprite2D.scale.x = 1
+	elif (self.linear_velocity.x < 0):
+		#print(self.linear_velocity.x)
+		$Pivot/Sprite2D.scale.x = -1
+	
 	var vectorplayertomouse = get_global_mouse_position() - global_position
 	var mouseangle = atan2(vectorplayertomouse.x, -vectorplayertomouse.y)
 	mouseangle = rad_to_deg(mouseangle)
 	Pivot.rotation_degrees = mouseangle
 	ScoopCollider.position.y = - (ScoopCollider.shape.get_height() / 2)
-	if (Input.is_action_just_pressed("LeftClick")) :
+	var timer = Timer.new()
+	var startTimer = 0.5
+	timer.wait_time = startTimer
+	
+	if (Input.is_action_just_pressed("LeftClick") && timer.is_stopped()) :
+		timer.start()
+		print("ran")
+		print("Again")
 		ScoopCollider.set_deferred("disabled", false)
-		print ("ScoopAppeared")
+		#print ("ScoopAppeared")
+		#print ("timer")
+		
 	else :
 		ScoopCollider.set_deferred("disabled", true)
+		
 	
 	gravity_scale = 0
 	var accelaration = 20
