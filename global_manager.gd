@@ -30,6 +30,10 @@ var Size : float = 5.0
 signal UpdatePlayerAttributes (Speed : float, Damage : float, Size : float)
 #TODO impplement abilities
 
+### MONEY
+var money : int = 0
+signal UpdateMoney(Money : int)
+
 ### UPDATE UI TRASH PERCENT
 signal UpdateTrashPercent (newvalue : float)
 
@@ -87,7 +91,7 @@ func toggleShopUI():
 	
 ### PLAYER STATS
 func EmitPlayerSignal():
-	self.UpdateTrashPercent.emit(self.Speed,self.Damage,self.Size)
+	self.UpdatePlayerAttributes.emit(self.Speed,self.Damage,self.Size)
 	
 func UpdateSpeed(value : float):
 	self.Speed = value
@@ -100,6 +104,10 @@ func UpdateDamage(value : float):
 func UpdateSize(value : float):
 	self.Size = value
 	EmitPlayerSignal()
+	
+func AddMoney(value : int):
+	self.money += value
+	self.UpdateMoney.emit(self.money)
 
 ### UPDATE UI TRASH PERCENT
 func UpdateTrashPrecent(value:float):
