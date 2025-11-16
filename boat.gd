@@ -22,11 +22,21 @@ func _physics_process(delta:):
 	mouseangle = rad_to_deg(mouseangle)
 	Pivot.rotation_degrees = mouseangle
 	ScoopCollider.position.y = - (ScoopCollider.shape.get_height() / 2)
-	if (Input.is_action_just_pressed("LeftClick")) :
+	var timer = Timer.new()
+	var startTimer = 0.5
+	timer.wait_time = startTimer
+	
+	if (Input.is_action_just_pressed("LeftClick") && timer.is_stopped()) :
+		timer.start()
+		print("ran")
+		print("Again")
 		ScoopCollider.set_deferred("disabled", false)
-		print ("ScoopAppeared")
+		#print ("ScoopAppeared")
+		#print ("timer")
+		
 	else :
 		ScoopCollider.set_deferred("disabled", true)
+		
 	
 	gravity_scale = 0
 	var accelaration = 20
