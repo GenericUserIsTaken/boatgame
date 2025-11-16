@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://brpb3psj6iwg8"]
 
 [ext_resource type="Script" uid="uid://cttb4irkjhphw" path="res://boat.gd" id="1_annr2"]
-[ext_resource type="Texture2D" uid="uid://d2n0uhbaedv5s" path="res://icon.svg" id="2_l0x5q"]
+[ext_resource type="Texture2D" uid="uid://gjafhra408kv" path="res://Sprites/boat uncropped.png" id="2_viw7v"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_anwow"]
 
@@ -17,7 +17,8 @@ shape = SubResource("CircleShape2D_anwow")
 disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_l0x5q")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_viw7v")
 
 [node name="Node2D" type="Node2D" parent="."]
 
