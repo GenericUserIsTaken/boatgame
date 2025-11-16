@@ -15,7 +15,7 @@ var max_health = 0
 # how much money does it give on clearing?
 var reward_value = 0
 # where should it move to after spawn? (applicable when spawned offscreen)
-const SPAWN_DRIFT_SPEED = 200
+const SPAWN_DRIFT_SPEED = 160
 const SPAWN_DRIFT_LERP_RATE = 0.8
 var spawn_target = Vector2.ZERO
 
@@ -26,14 +26,17 @@ const SHAKE_INTERVAL = 0.05 # interval between setting new offests
 var shake_cooldown = 0
 
 
-func setup(_sprite, _health, _reward_value, _spawn_target, _trash_manager_ref):
+func setup(_sprite, _health, _reward_value, _spawn_target, _trash_manager_ref, _hitbox_scale = 1):
 	if _sprite != null:
 		trash_sprite.set_texture(_sprite)
+		# random flip
+		trash_sprite.flip_h = randf() > 0.5
 	self.health = _health
 	self.max_health = _health
 	self.reward_value = _reward_value
 	self.spawn_target = _spawn_target
 	trash_manager_ref = _trash_manager_ref
+	$Area2D/CollisionShape2D.shape.radius *= _hitbox_scale
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
