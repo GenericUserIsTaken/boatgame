@@ -3,6 +3,11 @@ extends RigidBody2D
 @onready var ScoopCollider = $Pivot/Area2D/ScoopCollider
 @onready var boat = $"."
 var timer = Timer.new()
+const startheight = 50
+const startRad = 14
+var actheight = startheight * GlobalManager.Size
+var actRad = startRad * GlobalManager.Size
+
 
 # Called when the node enters the scene tree for the fi-t time.
 func _ready() -> void:
@@ -10,7 +15,8 @@ func _ready() -> void:
 	timer.one_shot = true
 	var startTimer = 0.5
 	timer.wait_time = startTimer
-	
+	ScoopCollider.shape.height = actheight
+	ScoopCollider.shape.radius = actRad
 	
 func _physics_process(delta:):
 	#flips sprite
@@ -41,7 +47,7 @@ func _physics_process(delta:):
 		
 	
 	gravity_scale = 0
-	var accelaration = 20
+	var accelaration = 11
 	var speed = accelaration * 2
 	var MaxSpeed = 200
 	var friction = 4 * speed
