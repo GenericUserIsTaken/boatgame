@@ -37,26 +37,31 @@ signal UpdateTrashPercent (newvalue : float)
 ##### FUNCTIONS
 ### GAME LOGIC
 func _ready() -> void:
+	print("Created timer")
 	self.gametime.connect("timeout", _on_timer_timeout)
 	self.add_child(self.gametime)
-	start_round()
+	moveToNextLevel()
 	
 func _on_timer_timeout():
+	print("Level Timeout, switching scenes")
 	self.currentLevelIndex += 1
 	#TODO DOUBLE CHECK THIS IF STATMENT
 	if self.currentLevelIndex > self.gamedata.levels.size():
 		#TODO ADD END GAME STATE
 		printerr("NEED TO END GAME DUMMY")
-	uiToLevelTransition(self.gamedata.levels[currentLevelIndex])
+	uiToTransition(self.gamedata.levels[currentLevelIndex])
+	print("ui to transition")
 	
-func start_round():
+func moveToNextLevel():
+	print("Move to next level")
 	var currentlevel = self.gamedata.levels[currentLevelIndex]
 	self.gametime.start(currentlevel.RoundTime)
 	self.SpawnTrash.emit(currentlevel.TrashAmount,currentlevel.RoundTime,currentlevel.DrawTrashBackground)
 	uiToGame(currentlevel)
+	
 
 ### UI LOGIC
-func uiToLevelTransition(leveldata):
+func uiToTransition(leveldata):
 	self.shopLock = true
 	self.shopVis = false
 	self.ChangeShopUIVisibility.emit(false, leveldata)
