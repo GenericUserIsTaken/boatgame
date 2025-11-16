@@ -112,3 +112,10 @@ func AddMoney(value : int):
 ### UPDATE UI TRASH PERCENT
 func UpdateTrashPrecent(value:float):
 	self.UpdateTrashPercent.emit(value)
+	
+
+### heheeha global util
+func SmoothLerp(current, target, speed, delta):
+	var weight = 1 - exp(-speed * delta)
+	return current.lerp(target, weight)
+	

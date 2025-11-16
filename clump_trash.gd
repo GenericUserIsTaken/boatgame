@@ -45,7 +45,12 @@ func _process(delta: float) -> void:
 		trash_sprite.positon = Vector2.from_angle(rand_angle) * rand_magnitude * shake_time_dampening
 		shake_cooldown = fposmod(shake_cooldown, SHAKE_INTERVAL)
 	
-	global_position = global_position.move_toward(spawn_target, SPAWN_DRIFT_SPEED * delta)
+	var lerped_position = GlobalManager.SmoothLerp(global_position, spawn_target, 0.5, delta)
+	global_position = global_position.move_toward(lerped_position, SPAWN_DRIFT_SPEED * delta)
+	
+	#if Input.action_press("ui_up"):
+		#$Area2D2/tempcollider.set_deferred(true)
+		
 
 @warning_ignore("unused_parameter")
 func _on_area_2d_area_entered(area: Area2D) -> void:
