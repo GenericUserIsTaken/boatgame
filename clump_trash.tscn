@@ -6,10 +6,10 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_4bjg5"]
 radius = 30.0
 
-[node name="Node2D" type="Node2D"]
+[node name="ClumpTrash" type="Node2D"]
 script = ExtResource("1_hklv4")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="TrashSprite" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_h7e20")
 
@@ -19,3 +19,8 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_4bjg5")
+
+[node name="ShakeTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
