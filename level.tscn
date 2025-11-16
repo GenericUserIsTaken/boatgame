@@ -21,6 +21,6 @@ offset_top = -540.0
 offset_right = -960.0
 offset_bottom = -540.0
 
-[node name="Boat" parent="." instance=ExtResource("1_u52ul")]
-
 [node name="TrashManager" parent="." instance=ExtResource("2_vonw3")]
+
+[node name="Boat" parent="." instance=ExtResource("1_u52ul")]

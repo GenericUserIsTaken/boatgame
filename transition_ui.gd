@@ -51,8 +51,11 @@ func tweenBar(year:int,to:float,time:float):
 		tween.tween_property(findBar(year), "value", to, time).from(0.0)
 		tweenDict[year] = tween
 	else:
-		tweenDict.get(year).stop() #WARNING if alt tabbed then it doesn't work
-		tweenDict.get(year).play() #WARNING E 0:00:32:289   transition_ui.gd:55 @ tweenBar(): Tween invalid. Either finished or created outside scene tree.
+		tweenDict.get(year).kill()
+		tweenDict.erase(year)
+		tweenBar(year,to,time)
+		#tweenDict.get(year).stop() #WARNING if alt tabbed then it doesn't work
+		#tweenDict.get(year).play() #WARNING E 0:00:32:289   transition_ui.gd:55 @ tweenBar(): Tween invalid. Either finished or created outside scene tree.
 	#tween.tween_property($Sprite, "scale", Vector2(), 1.0)
 	#tween.tween_callback($Sprite.queue_free)
 
