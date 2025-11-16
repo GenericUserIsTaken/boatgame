@@ -8,6 +8,9 @@ func _ready() -> void:
 
 
 func _physics_process(delta:):
+	var vectorplayertomouse = get_global_mouse_position() - global_position
+	var mouseangle = atan2(vectorplayertomouse.y, vectorplayertomouse.x)
+	print (mouseangle)
 	gravity_scale = 0
 	var accelaration = 20
 	var speed = accelaration * 2
