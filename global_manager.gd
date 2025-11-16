@@ -41,13 +41,15 @@ signal UpdateTrashPercent (newvalue : float)
 ##### FUNCTIONS
 ### GAME LOGIC
 func _ready() -> void:
+	await get_tree().create_timer(0.1).timeout #fix the ui not being initialized in time
 	self.process_mode = Node.PROCESS_MODE_ALWAYS
 	print("Created timer")
 	self.gametime.process_mode = Node.PROCESS_MODE_PAUSABLE
 	self.gametime.connect("timeout", _on_timer_timeout)
 	self.add_child(self.gametime)
-	currentLevelIndex = 0
-	moveToNextLevel()
+	currentLevelIndex = -1
+	#moveToNextLevel()
+	self._on_timer_timeout()
 	
 func _on_timer_timeout():
 	self.gametime.stop()

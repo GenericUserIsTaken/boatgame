@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dxibpdcodac8g"]
+[gd_scene load_steps=14 format=3 uid="uid://dxibpdcodac8g"]
 
 [ext_resource type="Script" uid="uid://c4djjpak87hrp" path="res://transition_ui.gd" id="1_27fn8"]
 [ext_resource type="PackedScene" uid="uid://b20h6x7unk8tj" path="res://in_game_ui.tscn" id="1_fyqef"]
@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://dnd6gufkr46jl" path="res://button.gd" id="4_nltto"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_27fn8"]
-bg_color = Color(0, 0, 0, 1)
+bg_color = Color(0.2627451, 0.5176471, 0.7176471, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n5ude"]
 bg_color = Color(1, 1, 1, 1)
@@ -29,10 +29,20 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_irxef"]
+bg_color = Color(0.2618393, 0.51721, 0.71807635, 1)
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_27fn8"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ok7cu"]
+bg_color = Color(0.3565174, 0.61856574, 0.83091515, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nltto"]
-bg_color = Color(0.4006826, 0.7589992, 0.32353133, 1)
+bg_color = Color(1, 0.26472372, 0.28376988, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -52,7 +62,6 @@ corner_radius_bottom_left = 5
 [node name="ShopUI" parent="." instance=ExtResource("3_27fn8")]
 
 [node name="TransitionUI" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -123,12 +132,15 @@ theme_override_font_sizes/mono_font_size = 30
 text = "Fun Facts
 -im going to eat plastic >:)
 -cats are cool
--im eepy"
+-im eepy
+"
+fit_content = true
 
 [node name="Panel" type="Panel" parent="TransitionUI/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_irxef")
 
 [node name="MarginContainer" type="MarginContainer" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel"]
 layout_mode = 1
@@ -140,10 +152,12 @@ grow_vertical = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
+theme_override_constants/margin_bottom = 40
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2"]
 layout_mode = 2
@@ -158,44 +172,44 @@ alignment = 1
 
 [node name="Label6" type="Label" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/VBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "3,000,000 metric tons -------"
+theme_override_font_sizes/font_size = 28
+text = "3.0M tons -------"
 horizontal_alignment = 2
 
 [node name="Label" type="Label" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/VBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "2,500,000 metric tons -------"
+theme_override_font_sizes/font_size = 28
+text = "2.5M tons -------"
 horizontal_alignment = 2
 
 [node name="Label2" type="Label" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/VBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "2,000,000 metric tons -------"
+theme_override_font_sizes/font_size = 28
+text = "2.0M tons -------"
 horizontal_alignment = 2
 
 [node name="Label3" type="Label" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/VBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "1,500,000 metric tons -------"
+theme_override_font_sizes/font_size = 28
+text = "1.5M tons -------"
 horizontal_alignment = 2
 
 [node name="Label4" type="Label" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/VBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "1,000,000 metric tons -------"
+theme_override_font_sizes/font_size = 28
+text = "1.0M tons -------"
 horizontal_alignment = 2
 
 [node name="Label5" type="Label" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/VBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "500,000 metric tons -------"
+theme_override_font_sizes/font_size = 28
+text = "0.5M tons -------"
 horizontal_alignment = 2
 
 [node name="Label7" type="Label" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/VBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "100,000 metric tons -------"
+theme_override_font_sizes/font_size = 28
+text = "0.1M tons -------"
 horizontal_alignment = 2
 
 [node name="Panel" type="Panel" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/VBoxContainer"]
@@ -212,20 +226,19 @@ vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2"]
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_stretch_ratio = 5.0
-theme_override_constants/separation = 200
-alignment = 1
+theme_override_constants/separation = 100
 
 [node name="Control" type="VBoxContainer" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer"]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="ProgressBar" type="ProgressBar" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer/Control"]
+[node name="1960Bar" type="ProgressBar" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer/Control"]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_styles/background = SubResource("StyleBoxFlat_ok7cu")
 theme_override_styles/fill = SubResource("StyleBoxFlat_nltto")
 value = 1.31
 fill_mode = 3
@@ -249,10 +262,11 @@ custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="ProgressBar" type="ProgressBar" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer/Control2"]
+[node name="1980Bar" type="ProgressBar" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer/Control2"]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_styles/background = SubResource("StyleBoxFlat_ok7cu")
 theme_override_styles/fill = SubResource("StyleBoxFlat_nltto")
 value = 4.21
 fill_mode = 3
@@ -276,10 +290,11 @@ custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="ProgressBar" type="ProgressBar" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer/Control3"]
+[node name="2000Bar" type="ProgressBar" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer/Control3"]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_styles/background = SubResource("StyleBoxFlat_ok7cu")
 theme_override_styles/fill = SubResource("StyleBoxFlat_nltto")
 value = 19.3
 fill_mode = 3
@@ -303,10 +318,11 @@ custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="ProgressBar" type="ProgressBar" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer/Control4"]
+[node name="2020Bar" type="ProgressBar" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer/Control4"]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_styles/background = SubResource("StyleBoxFlat_ok7cu")
 theme_override_styles/fill = SubResource("StyleBoxFlat_nltto")
 value = 45.68
 fill_mode = 3
@@ -330,10 +346,11 @@ custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="ProgressBar" type="ProgressBar" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer/Control5"]
+[node name="2040Bar" type="ProgressBar" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer/Control5"]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_styles/background = SubResource("StyleBoxFlat_ok7cu")
 theme_override_styles/fill = SubResource("StyleBoxFlat_nltto")
 value = 100.0
 fill_mode = 3
