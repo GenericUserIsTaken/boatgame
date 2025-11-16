@@ -7,11 +7,12 @@ func _ready() -> void:
 	_on_money_changed()
 	_on_trash_changed(100.0)
 
-func _on_visibilty_request(visible : bool, gamedata : LevelData):
+@warning_ignore("shadowed_variable_base_class")
+func _on_visibilty_request(visible : bool, _gamedata : LevelData):
 	print("game ui visibility set to ",visible)
 	self.visible = visible
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	updateTime()
 
 func updateTime():
