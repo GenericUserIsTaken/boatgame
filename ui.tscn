@@ -1,22 +1,21 @@
 [gd_scene format=3 uid="uid://dxibpdcodac8g"]
 
-[node name="UI" type="Control"]
+[node name="UI" type="CanvasLayer"]
+
+[node name="TransitionUI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TransitionUI" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
 [node name="InGameUI" type="Control" parent="."]
+layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="ShopUI" type="Control" parent="."]
+layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
