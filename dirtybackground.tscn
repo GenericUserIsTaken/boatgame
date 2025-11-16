@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://u1fgp1si8844"]
+[gd_scene load_steps=5 format=3 uid="uid://u1fgp1si8844"]
 
-[ext_resource type="Shader" uid="uid://bi3f6qxymk1ac" path="res://dirtybackground.tres" id="1_00ojw"]
-[ext_resource type="Texture2D" uid="uid://gl0nbon1i76c" path="res://Sprites/water tileable 2048x.png" id="2_t7nmw"]
+[ext_resource type="Shader" uid="uid://d7m5osvyyodl" path="res://dirtybackground2.gdshader" id="1_00ojw"]
+[ext_resource type="Texture2D" uid="uid://bst4ygbrlwp8" path="res://Sprites/plasticwater tileable 2048x.png" id="2_t7nmw"]
+[ext_resource type="Script" uid="uid://dadglkoai2rvp" path="res://dirtybackground.gd" id="3_t7nmw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t7nmw"]
 shader = ExtResource("1_00ojw")
@@ -19,3 +20,4 @@ size_flags_vertical = 3
 texture = ExtResource("2_t7nmw")
 expand_mode = 2
 stretch_mode = 1
+script = ExtResource("3_t7nmw")
