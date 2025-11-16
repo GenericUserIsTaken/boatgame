@@ -41,7 +41,9 @@ signal UpdateTrashPercent (newvalue : float)
 ##### FUNCTIONS
 ### GAME LOGIC
 func _ready() -> void:
+	self.process_mode = Node.PROCESS_MODE_ALWAYS
 	print("Created timer")
+	self.gametime.process_mode = Node.PROCESS_MODE_PAUSABLE
 	self.gametime.connect("timeout", _on_timer_timeout)
 	self.add_child(self.gametime)
 	currentLevelIndex = 0
@@ -67,7 +69,17 @@ func moveToNextLevel():
 	self.gametime.start(currentlevel.RoundTime)
 	self.SpawnTrash.emit(currentlevel.TrashAmount,currentlevel.RoundTime,currentlevel.DrawTrashBackground)
 	uiToGame(currentlevel)
-	
+
+func pauseTime(val : bool):
+	get_tree().paused = val
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("tab"):
+		print("changing ui vis")
+		if not shopLock:
+			self.shopVis = not self.shopVis
+			pauseTime(self.shopVis)
+			self.ChangeShopUIVisibility.emit(self.shopVis, self.gamedata.levels[currentLevelIndex])
 
 ### UI LOGIC
 func uiToTransition(leveldata):
