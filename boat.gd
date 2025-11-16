@@ -17,7 +17,8 @@ func _ready() -> void:
 	timer.wait_time = startTimer
 	ScoopCollider.shape.height = actheight
 	ScoopCollider.shape.radius = actRad
-	
+	#$Pivot/NetVizualizer.shape.height = actheight
+	#$Pivot/NetVizualizer.shape.radius = actRad
 func _physics_process(delta:):
 	#flips sprite
 	if (self.linear_velocity.x > 0):
@@ -32,6 +33,7 @@ func _physics_process(delta:):
 	mouseangle = rad_to_deg(mouseangle)
 	Pivot.rotation_degrees = mouseangle
 	ScoopCollider.position.y = - (ScoopCollider.shape.get_height() / 2)
+	
 	#print (timer.time_left)
 	
 	if (Input.is_action_just_pressed("LeftClick") && timer.is_stopped()) :
@@ -45,6 +47,10 @@ func _physics_process(delta:):
 	else :
 		ScoopCollider.set_deferred("disabled", true)
 		
+	if (Input.is_action_pressed("LeftClick")) :
+		$Pivot/NetVizualizer.visible = true
+	else:
+		$Pivot/NetVizualizer.visible = false
 	
 	gravity_scale = 0
 	var accelaration = 11
