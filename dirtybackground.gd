@@ -7,6 +7,10 @@ var mask_image
 var mask_texture 
 @onready var boat = $"../Boat"
 
+@warning_ignore("shadowed_variable_base_class")
+func _on_visibilty_request(visible : bool):
+	self.visible = visible
+
 func _ready():
 	#mask_image = Image.create(width, height, false, Image.FORMAT_RF) 
 	mask_image = Image.create_empty(width, height, false, Image.FORMAT_RGBA8)
@@ -15,12 +19,13 @@ func _ready():
 	#self.material.set_shader_param("mask", mask_texture)
 	var mat := self.material as ShaderMaterial
 	mat.set_shader_parameter("mask", mask_texture)
+	GlobalManager.connect("ChangeBackgroundVisibility", _on_visibilty_request)
 
 func world_to_screen(world_pos: Vector2) -> Vector2:
 	# Get the viewport size (e.g. 1920x1080)
 	#var screen_size = get_viewport().get_visible_rect().size
 	var screen_pos = Vector2(world_pos.x + screen_size.x / 2,world_pos.y+ (screen_size.x / 2))
-	screen_pos += Vector2(50,50)
+	screen_pos += Vector2(0,-400)
 	# Shift world origin (0,0) to the center of the screen
 	#var screen_pos = world_pos + screen_size / 2
 	
