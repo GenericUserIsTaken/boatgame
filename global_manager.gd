@@ -61,6 +61,8 @@ func _on_timer_timeout():
 		return
 	uiToTransition(self.gamedata.levels[currentLevelIndex])
 	print("ui to transition")
+	
+	ResetLevel.emit()
 
 #transition button should call this
 func moveToNextLevel():
