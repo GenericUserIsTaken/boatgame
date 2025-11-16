@@ -4,7 +4,7 @@ func _ready() -> void:
 	GlobalManager.connect("ChangeGameUIVisibility", _on_visibilty_request)
 	GlobalManager.connect("UpdateMoney", _on_money_changed)
 	GlobalManager.connect("UpdateTrashPercent", _on_trash_changed)
-	_on_money_changed()
+	_on_money_changed(10)
 	_on_trash_changed(100.0)
 
 @warning_ignore("shadowed_variable_base_class")
@@ -20,7 +20,7 @@ func updateTime():
 	var seconds = int(fmod(GlobalManager.gametime.get_time_left(), 60.0))
 	$Time.text = "%02d:%02d" % [minutes, seconds]
 
-func _on_money_changed():
+func _on_money_changed(money):
 	$VBoxContainer/Money.text = "$%01d" % [GlobalManager.money]
 
 func _on_trash_changed(value : float):

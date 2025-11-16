@@ -76,6 +76,8 @@ func pauseTime(val : bool):
 	get_tree().paused = val
 
 func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("skip"):
+		_on_timer_timeout()
 	if event.is_action_pressed("tab"):
 		print("changing ui vis")
 		if not shopLock:
