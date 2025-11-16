@@ -21,11 +21,11 @@ func _ready() -> void:
 func _physics_process(delta:):
 	#flips sprite
 	if (self.linear_velocity.x > 0):
+		$Sprite2D.flip_h = false
 		#print(self.linear_velocity.x)
-		$Pivot/Sprite2D.scale.x = 1
 	elif (self.linear_velocity.x < 0):
 		#print(self.linear_velocity.x)
-		$Pivot/Sprite2D.scale.x = -1
+		$Sprite2D.flip_h = true
 	
 	var vectorplayertomouse = get_global_mouse_position() - global_position
 	var mouseangle = atan2(vectorplayertomouse.x, -vectorplayertomouse.y)

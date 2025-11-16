@@ -22,6 +22,7 @@ shape = SubResource("CircleShape2D_anwow")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_viw7v")
+flip_h = true
 
 [node name="Pivot" type="Node2D" parent="."]
 
