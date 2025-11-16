@@ -6,8 +6,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_anwow"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_viw7v"]
-radius = 90.0
-height = 355.38
+radius = 80.0
+height = 250.36
 
 [node name="Boat" type="RigidBody2D"]
 script = ExtResource("1_annr2")
@@ -19,6 +19,7 @@ disabled = true
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_viw7v")
+flip_h = true
 
 [node name="Pivot" type="Node2D" parent="."]
 

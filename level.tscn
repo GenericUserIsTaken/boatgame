@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cujkgy3ic8tnf"]
+[gd_scene load_steps=5 format=3 uid="uid://cujkgy3ic8tnf"]
 
 [ext_resource type="PackedScene" uid="uid://buo05ugo80lto" path="res://background.tscn" id="1_oi3di"]
 [ext_resource type="PackedScene" uid="uid://brpb3psj6iwg8" path="res://boat.tscn" id="1_u52ul"]
+[ext_resource type="PackedScene" uid="uid://u1fgp1si8844" path="res://dirtybackground.tscn" id="2_0b4ue"]
 [ext_resource type="PackedScene" uid="uid://m8h38nxbg0ff" path="res://trash_manager.tscn" id="2_vonw3"]
 
 [node name="Level" type="Node"]
@@ -12,6 +13,14 @@ offset_top = -540.0
 offset_right = -960.0
 offset_bottom = -540.0
 
-[node name="Boat" parent="." instance=ExtResource("1_u52ul")]
+[node name="DirtyBackground" parent="." instance=ExtResource("2_0b4ue")]
+visible = false
+self_modulate = Color(0.6048822, 0.80438983, 0.69596744, 1)
+offset_left = -960.0
+offset_top = -540.0
+offset_right = -960.0
+offset_bottom = -540.0
 
 [node name="TrashManager" parent="." instance=ExtResource("2_vonw3")]
+
+[node name="Boat" parent="." instance=ExtResource("1_u52ul")]
