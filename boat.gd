@@ -1,6 +1,7 @@
 extends RigidBody2D
 @onready var Pivot = $Pivot
 @onready var ScoopCollider = $Pivot/Area2D/ScoopCollider
+@onready var boat = $"."
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -8,6 +9,14 @@ func _ready() -> void:
 	
 	
 func _physics_process(delta:):
+	#flips sprite
+	if (self.linear_velocity.x > 0):
+		#print(self.linear_velocity.x)
+		$Pivot/Sprite2D.scale.x = 1
+	elif (self.linear_velocity.x < 0):
+		#print(self.linear_velocity.x)
+		$Pivot/Sprite2D.scale.x = -1
+	
 	var vectorplayertomouse = get_global_mouse_position() - global_position
 	var mouseangle = atan2(vectorplayertomouse.x, -vectorplayertomouse.y)
 	mouseangle = rad_to_deg(mouseangle)
