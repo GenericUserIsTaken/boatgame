@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cujkgy3ic8tnf"]
+[gd_scene load_steps=3 format=3 uid="uid://cujkgy3ic8tnf"]
 
 [ext_resource type="PackedScene" uid="uid://brpb3psj6iwg8" path="res://boat.tscn" id="1_u52ul"]
+[ext_resource type="PackedScene" uid="uid://m8h38nxbg0ff" path="res://trash_manager.tscn" id="2_vonw3"]
 
 [node name="Level" type="Node2D"]
 
@@ -8,8 +9,4 @@
 
 [node name="Boat" parent="." instance=ExtResource("1_u52ul")]
 
-[node name="TrashManager" type="Node2D" parent="."]
-
-[node name="SurfaceTrash" type="Node2D" parent="TrashManager"]
-
-[node name="ClumpTrashFolder" type="Node2D" parent="TrashManager"]
+[node name="TrashManager" parent="." instance=ExtResource("2_vonw3")]
