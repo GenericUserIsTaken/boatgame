@@ -55,18 +55,13 @@ func _process(delta: float) -> void:
 	var lerped_position = GlobalManager.SmoothLerp(position, spawn_target, SPAWN_DRIFT_LERP_RATE, delta)
 	position = position.move_toward(lerped_position, SPAWN_DRIFT_SPEED * delta)
 	
-	#TODO TEMP
-	if Input.is_action_just_pressed("ui_up"):
-		$Area2D2/tempcollider.set_deferred("disabled", false)
-	
 
 @warning_ignore("unused_parameter")
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	$Area2D2/tempcollider.set_deferred("disabled", true) #TODO TEMP
-	health -= 1#GlobalManager.Damage #TODO TEMP
+	health -= GlobalManager.Damage
 	if health <= 0:
 		# is destroyed
-		#GlobalManager.AddMoney(reward_value) #TODO TEMP
+		GlobalManager.AddMoney(reward_value)
 		print("/tm ", self, " attempts to notify removal")
 		trash_manager_ref.notify_removal(self)
 	else:

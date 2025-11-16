@@ -1,12 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cd6uebhpp21nf"]
+[gd_scene load_steps=4 format=3 uid="uid://cd6uebhpp21nf"]
 
 [ext_resource type="Texture2D" uid="uid://d2n0uhbaedv5s" path="res://icon.svg" id="1_h7e20"]
 [ext_resource type="Script" uid="uid://cja6u6d812w8p" path="res://clump_trash.gd" id="1_hklv4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4bjg5"]
 radius = 30.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_h7e20"]
 
 [node name="ClumpTrash" type="Node2D"]
 script = ExtResource("1_hklv4")
@@ -27,14 +25,5 @@ shape = SubResource("CircleShape2D_4bjg5")
 [node name="ShakeTimer" type="Timer" parent="."]
 wait_time = 0.3
 one_shot = true
-
-[node name="Area2D2" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 2
-
-[node name="tempcollider" type="CollisionShape2D" parent="Area2D2"]
-position = Vector2(32, -8)
-shape = SubResource("CircleShape2D_h7e20")
-disabled = true
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
