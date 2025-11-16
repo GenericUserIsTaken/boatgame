@@ -1,6 +1,9 @@
-[gd_scene format=3 uid="uid://m8h38nxbg0ff"]
+[gd_scene load_steps=2 format=3 uid="uid://m8h38nxbg0ff"]
+
+[ext_resource type="Script" uid="uid://bvr1yvvnw46k0" path="res://trash_manager.gd" id="1_dlkyl"]
 
 [node name="TrashManager" type="Node2D"]
+script = ExtResource("1_dlkyl")
 
 [node name="SurfaceTrash" type="Node2D" parent="."]
 

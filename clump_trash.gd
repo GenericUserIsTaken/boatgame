@@ -3,6 +3,7 @@ extends Node2D
 @onready var shake_timer = $ShakeTimer
 @onready var trash_sprite_pivot = $TrashSpritePivot
 @onready var trash_sprite = $TrashSpritePivot/TrashSprite
+var trash_manager_ref : Script = null
 
 ### trash details
 # the number of stages that are represented when losing health
@@ -24,18 +25,14 @@ const SHAKE_INTERVAL = 0.05 # interval between setting new offests
 var shake_cooldown = 0
 
 
-func _ready():
-	health = 10
-	max_health = 10
-	spawn_target = Vector2(500,200)
-	print("trash ready")
-
-func setup(_sprite, _health, _reward_value, _spawn_target):
-	trash_sprite.set_texture(_sprite)
+func setup(_sprite, _health, _reward_value, _spawn_target, _trash_manager_ref):
+	if _sprite != null:
+		trash_sprite.set_texture(_sprite)
 	self.health = _health
 	self.max_health = _health
 	self.reward_value = _reward_value
 	self.spawn_target = _spawn_target
+	trash_manager_ref = _trash_manager_ref
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -60,7 +57,6 @@ func _process(delta: float) -> void:
 	#TODO TEMP
 	if Input.is_action_just_pressed("ui_up"):
 		$Area2D2/tempcollider.set_deferred("disabled", false)
-		print("disabled = false")
 	
 
 @warning_ignore("unused_parameter")
@@ -70,6 +66,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	if health <= 0:
 		# is destroyed
 		#GlobalManager.AddMoney(reward_value) #TODO TEMP
+		trash_manager_ref.notify_removal(self)
 		queue_free()
 	else:
 		# takes damage
