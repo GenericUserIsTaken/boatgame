@@ -47,7 +47,7 @@ func _physics_process(delta:):
 		
 	
 	gravity_scale = 0
-	var accelaration = 20
+	var accelaration = 11
 	var speed = accelaration * 2
 	var MaxSpeed = 200
 	var friction = 4 * speed
