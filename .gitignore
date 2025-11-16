@@ -15,3 +15,5 @@ export_credentials.cfg
 data_*/
 mono_crash.*.json
 icon.svg.import
+Sprites/boat uncropped.png.import
+Sprites/water tileable 2048x.png.import
