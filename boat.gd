@@ -44,11 +44,13 @@ func _physics_process(delta:):
 	var MaxSpeed = 200
 	var friction = 4 * speed
 	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	
+	#GlobalManager.Size
+	#GlobalManager.Speed
+	#GlobalManager.Damage
 	if direction.length() > 0:
 		#current speed, float:   self.linear_velocity.length()
 		#current direcition, vector2:   self.linear_velocity.normalized()
-		self.apply_force( direction.normalized() * speed)
+		self.apply_force( direction.normalized() * speed * GlobalManager.Speed)
 	elif (self.linear_velocity.length() > friction):
 		pass
 		#self.apply_force( direction.normalized() * friction)
