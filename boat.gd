@@ -7,17 +7,17 @@ func _ready() -> void:
 	pass
 	
 	
-
-
 func _physics_process(delta:):
 	var vectorplayertomouse = get_global_mouse_position() - global_position
 	var mouseangle = atan2(vectorplayertomouse.x, -vectorplayertomouse.y)
 	mouseangle = rad_to_deg(mouseangle)
-	print (mouseangle)
 	Pivot.rotation_degrees = mouseangle
 	ScoopCollider.position.y = - (ScoopCollider.shape.get_height() / 2)
-	
-
+	if (Input.is_action_just_pressed("LeftClick")) :
+		ScoopCollider.set_deferred("disabled", false)
+		print ("ScoopAppeared")
+	else :
+		ScoopCollider.set_deferred("disabled", true)
 	
 	gravity_scale = 0
 	var accelaration = 20
