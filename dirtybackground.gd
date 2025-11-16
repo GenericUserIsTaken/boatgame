@@ -12,6 +12,11 @@ func _on_visibilty_request(visible : bool):
 	self.visible = visible
 
 func _ready():
+	makenewmask()
+	GlobalManager.connect("ChangeBackgroundVisibility", _on_visibilty_request)
+	GlobalManager.connect("ResetCanvas", makenewmask)
+
+func makenewmask():
 	#mask_image = Image.create(width, height, false, Image.FORMAT_RF) 
 	mask_image = Image.create_empty(width, height, false, Image.FORMAT_RGBA8)
 	mask_image.fill(Color(1,1,1,1)) # start fully visible (white)
@@ -19,7 +24,6 @@ func _ready():
 	#self.material.set_shader_param("mask", mask_texture)
 	var mat := self.material as ShaderMaterial
 	mat.set_shader_parameter("mask", mask_texture)
-	GlobalManager.connect("ChangeBackgroundVisibility", _on_visibilty_request)
 
 func world_to_screen(world_pos: Vector2) -> Vector2:
 	# Get the viewport size (e.g. 1920x1080)

@@ -22,6 +22,7 @@ signal ChangeEndUIVisibility (Visible : bool)
 signal ChangeBackgroundVisibility (Visible : bool)
 ### LEVEL SETUP
 signal ResetLevel ()
+signal ResetCanvas ()
 signal SpawnTrash (TrashAmount : int, RoundTime : float, SurfaceTrashVisible : bool)
 
 ### PLAYER STATS
@@ -97,6 +98,7 @@ func uiToTransition(leveldata):
 func uiToGame(leveldata):
 	self.shopLock = false
 	self.shopVis = false
+	self.ResetCanvas.emit()
 	self.ChangeShopUIVisibility.emit(false, leveldata)
 	self.ChangeTransitionUIVisibility.emit(false, leveldata)
 	self.ChangeGameUIVisibility.emit(true, leveldata)
