@@ -1,4 +1,5 @@
 extends RigidBody2D
+@onready var ScoopCollider = $Node2D/Area2D/ScoopCollider
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -9,8 +10,12 @@ func _ready() -> void:
 
 func _physics_process(delta:):
 	var vectorplayertomouse = get_global_mouse_position() - global_position
-	var mouseangle = atan2(vectorplayertomouse.y, vectorplayertomouse.x)
+	var mouseangle = atan2(vectorplayertomouse.x, vectorplayertomouse.y)
+	mouseangle = rad_to_deg(mouseangle)
 	print (mouseangle)
+	ScoopCollider.rotation_degrees = mouseangle
+
+	
 	gravity_scale = 0
 	var accelaration = 20
 	var speed = accelaration * 2
