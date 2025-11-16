@@ -2,11 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://buo05ugo80lto" path="res://background.tscn" id="1_oi3di"]
 [ext_resource type="PackedScene" uid="uid://brpb3psj6iwg8" path="res://boat.tscn" id="1_u52ul"]
-[ext_resource type="PackedScene" path="res://trash_manager.tscn" id="2_vonw3"]
+[ext_resource type="PackedScene" uid="uid://m8h38nxbg0ff" path="res://trash_manager.tscn" id="2_vonw3"]
 
 [node name="Level" type="Node"]
 
 [node name="Background" parent="." instance=ExtResource("1_oi3di")]
+offset_left = -960.0
+offset_top = -540.0
+offset_right = -960.0
+offset_bottom = -540.0
 
 [node name="Boat" parent="." instance=ExtResource("1_u52ul")]
 

@@ -1,8 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://buo05ugo80lto"]
+[gd_scene load_steps=4 format=3 uid="uid://buo05ugo80lto"]
 
+[ext_resource type="Shader" uid="uid://dlf4eoymq4bnv" path="res://background.gdshader" id="1_i7s6n"]
 [ext_resource type="Texture2D" uid="uid://gl0nbon1i76c" path="res://Sprites/water tileable 2048x.png" id="1_oabld"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xehqc"]
+shader = ExtResource("1_i7s6n")
+shader_parameter/scale = 20.0
+
 [node name="Background" type="TextureRect"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_xehqc")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
