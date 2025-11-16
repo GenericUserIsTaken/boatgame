@@ -20,14 +20,14 @@ disabled = true
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_viw7v")
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Pivot" type="Node2D" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Pivot"]
 position = Vector2(1, 0)
 
-[node name="Area2D" type="Area2D" parent="Node2D"]
+[node name="Area2D" type="Area2D" parent="Pivot"]
 collision_layer = 4
 collision_mask = 2
 
-[node name="ScoopCollider" type="CollisionShape2D" parent="Node2D/Area2D"]
+[node name="ScoopCollider" type="CollisionShape2D" parent="Pivot/Area2D"]
 shape = SubResource("CapsuleShape2D_viw7v")
