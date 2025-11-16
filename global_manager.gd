@@ -15,10 +15,10 @@ var shopLock : bool = true
 var shopVis : bool = false
 
 ### UI VISIBILITY SIGNALS
-signal ChangeGameUIVisibility (Visbile : bool, gamedata : LevelData)
-signal ChangeTransitionUIVisibility (Visbile : bool, gamedata : LevelData)
-signal ChangeShopUIVisibility (Visbile : bool, gamedata : LevelData)
-
+signal ChangeGameUIVisibility (Visible : bool, gamedata : LevelData)
+signal ChangeTransitionUIVisibility (Visible : bool, gamedata : LevelData)
+signal ChangeShopUIVisibility (Visible : bool, gamedata : LevelData)
+signal ChangeEndUIVisibility (Visible : bool)
 ### LEVEL SETUP
 signal ResetLevel ()
 signal SpawnTrash (TrashAmount : int, RoundTime : float, SurfaceTrashVisible : bool)
@@ -56,10 +56,8 @@ func _on_timer_timeout():
 	self.currentLevelIndex += 1
 	print("Level Timeout, switching scenes to level ",self.currentLevelIndex)
 	
-	#TODO DOUBLE CHECK THIS IF STATMENT
 	if self.currentLevelIndex >= self.gamedata.levels.size():
-		#TODO ADD END GAME STATE
-		printerr("NEED TO END GAME DUMMY")
+		ChangeEndUIVisibility.emit(true)
 		return
 	uiToTransition(self.gamedata.levels[currentLevelIndex])
 	print("ui to transition")

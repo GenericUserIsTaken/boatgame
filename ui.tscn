@@ -1,9 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://dxibpdcodac8g"]
+[gd_scene load_steps=18 format=3 uid="uid://dxibpdcodac8g"]
 
 [ext_resource type="Script" uid="uid://c4djjpak87hrp" path="res://transition_ui.gd" id="1_27fn8"]
 [ext_resource type="PackedScene" uid="uid://b20h6x7unk8tj" path="res://in_game_ui.tscn" id="1_fyqef"]
 [ext_resource type="PackedScene" uid="uid://brfxsiattbo2o" path="res://shop_ui.tscn" id="3_27fn8"]
 [ext_resource type="Script" uid="uid://dnd6gufkr46jl" path="res://button.gd" id="4_nltto"]
+[ext_resource type="Script" uid="uid://xqv8eo77qjic" path="res://exitbutton.gd" id="5_ibotj"]
+[ext_resource type="Script" uid="uid://bxbqe8df1k313" path="res://end_ui.gd" id="5_n5ude"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_27fn8"]
 bg_color = Color(0.2627451, 0.5176471, 0.7176471, 1)
@@ -54,6 +56,11 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e2l4f"]
+bg_color = Color(0.2627451, 0.5176471, 0.7176471, 1)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ibotj"]
 
 [node name="UI" type="CanvasLayer"]
 
@@ -121,21 +128,6 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_y4yjw")
 text = "Next Level"
 script = ExtResource("4_nltto")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="TransitionUI/Panel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 30
-theme_override_font_sizes/bold_font_size = 30
-theme_override_font_sizes/bold_italics_font_size = 30
-theme_override_font_sizes/italics_font_size = 30
-theme_override_font_sizes/mono_font_size = 30
-text = "Fun Facts
--im going to eat plastic >:)
--cats are cool
--im eepy
-"
-fit_content = true
-
 [node name="Panel" type="Panel" parent="TransitionUI/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -167,7 +159,7 @@ alignment = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/separation = 35
+theme_override_constants/separation = 63
 alignment = 1
 
 [node name="Label6" type="Label" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/VBoxContainer/VBoxContainer"]
@@ -229,12 +221,12 @@ layout_mode = 2
 size_flags_stretch_ratio = 5.0
 theme_override_constants/separation = 100
 
-[node name="Control" type="VBoxContainer" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer"]
+[node name="1960Control" type="VBoxContainer" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer"]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="1960Bar" type="ProgressBar" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer/Control"]
+[node name="1960Bar" type="ProgressBar" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer/1960Control"]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 size_flags_vertical = 3
@@ -244,25 +236,26 @@ value = 1.31
 fill_mode = 3
 show_percentage = false
 
-[node name="Panel" type="Panel" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer/Control"]
+[node name="Panel" type="Panel" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer/1960Control"]
 custom_minimum_size = Vector2(30, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_ibotj")
 
-[node name="Label" type="Label" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer/Control"]
+[node name="Label" type="Label" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer/1960Control"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "1960"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control2" type="VBoxContainer" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer"]
+[node name="1980Control" type="VBoxContainer" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="1980Bar" type="ProgressBar" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer/Control2"]
+[node name="1980Bar" type="ProgressBar" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer/1980Control"]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 size_flags_vertical = 3
@@ -272,25 +265,26 @@ value = 4.21
 fill_mode = 3
 show_percentage = false
 
-[node name="Panel" type="Panel" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer/Control2"]
+[node name="Panel" type="Panel" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer/1980Control"]
 custom_minimum_size = Vector2(30, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_ibotj")
 
-[node name="Label" type="Label" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer/Control2"]
+[node name="Label" type="Label" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer/1980Control"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "1980"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control3" type="VBoxContainer" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer"]
+[node name="2000Control" type="VBoxContainer" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="2000Bar" type="ProgressBar" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer/Control3"]
+[node name="2000Bar" type="ProgressBar" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer/2000Control"]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 size_flags_vertical = 3
@@ -300,25 +294,26 @@ value = 19.3
 fill_mode = 3
 show_percentage = false
 
-[node name="Panel" type="Panel" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer/Control3"]
+[node name="Panel" type="Panel" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer/2000Control"]
 custom_minimum_size = Vector2(30, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_ibotj")
 
-[node name="Label" type="Label" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer/Control3"]
+[node name="Label" type="Label" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer/2000Control"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "2000"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control4" type="VBoxContainer" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer"]
+[node name="2020Control" type="VBoxContainer" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="2020Bar" type="ProgressBar" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer/Control4"]
+[node name="2020Bar" type="ProgressBar" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer/2020Control"]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 size_flags_vertical = 3
@@ -328,25 +323,26 @@ value = 45.68
 fill_mode = 3
 show_percentage = false
 
-[node name="Panel" type="Panel" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer/Control4"]
+[node name="Panel" type="Panel" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer/2020Control"]
 custom_minimum_size = Vector2(30, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_ibotj")
 
-[node name="Label" type="Label" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer/Control4"]
+[node name="Label" type="Label" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer/2020Control"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "2020"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control5" type="VBoxContainer" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer"]
+[node name="2040Control" type="VBoxContainer" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="2040Bar" type="ProgressBar" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer/Control5"]
+[node name="2040Bar" type="ProgressBar" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer/2040Control"]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 size_flags_vertical = 3
@@ -356,17 +352,132 @@ value = 100.0
 fill_mode = 3
 show_percentage = false
 
-[node name="Panel" type="Panel" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer/Control5"]
+[node name="Panel" type="Panel" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer/2040Control"]
 custom_minimum_size = Vector2(30, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_ibotj")
 
-[node name="Label" type="Label" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer/Control5"]
+[node name="Label" type="Label" parent="TransitionUI/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer2/HBoxContainer/2040Control"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "2040"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="RichTextLabel" type="RichTextLabel" parent="TransitionUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.016
+anchor_top = 0.17600001
+anchor_right = 0.354
+anchor_bottom = 1.0
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/bold_font_size = 30
+theme_override_font_sizes/bold_italics_font_size = 30
+theme_override_font_sizes/italics_font_size = 30
+theme_override_font_sizes/mono_font_size = 30
+bbcode_enabled = true
+text = "Fun Facts
+-im going to eat plastic >:)
+-cats are cool
+-im eepy
+Fun Facts
+-im going to eat plastic >:)
+-cats are cool
+-im eepy
+Fun Facts
+-im going to eat plastic >:)
+-cats are cool
+-im eepy
+Fun Facts
+-im going to eat plastic >:)
+-cats are cool
+-im eepy
+Fun Facts
+-im going to eat plastic >:)
+-cats are cool
+-im eepy
+"
+fit_content = true
+
+[node name="EndUI" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("5_n5ude")
+
+[node name="Panel" type="Panel" parent="EndUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_e2l4f")
+
+[node name="Label" type="Label" parent="EndUI/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 90
+text = "Thanks For Playing!!!"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="EndUI/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.15900001
+anchor_right = 1.0
+anchor_bottom = 0.864
+offset_top = 0.27998352
+offset_bottom = -0.11999512
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 50
+theme_override_font_sizes/bold_font_size = 50
+theme_override_font_sizes/bold_italics_font_size = 50
+theme_override_font_sizes/italics_font_size = 50
+theme_override_font_sizes/mono_font_size = 50
+text = "Plastic pollution is growing faster than our planet can handle. Every choice matters—reduce, reuse, and rethink plastic before it’s too late."
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="EndUI/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -134.0
+offset_top = -88.565
+offset_right = 134.0
+offset_bottom = -11.564697
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 50
+text = "Quit Game"
+script = ExtResource("5_ibotj")
+
+[node name="TextureRect" type="TextureRect" parent="EndUI/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.289
+anchor_right = 1.0
+anchor_bottom = 0.91200006
+texture = SubResource("PlaceholderTexture2D_ibotj")
+stretch_mode = 1
+
 [connection signal="button_down" from="TransitionUI/Panel/MarginContainer/VBoxContainer/HBoxContainer/Button" to="TransitionUI/Panel/MarginContainer/VBoxContainer/HBoxContainer/Button" method="_on_button_down"]
+[connection signal="button_down" from="EndUI/Panel/Button" to="EndUI/Panel/Button" method="_on_button_down"]

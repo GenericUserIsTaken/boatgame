@@ -5,22 +5,42 @@
 
 [sub_resource type="Resource" id="Resource_sbglp"]
 script = ExtResource("1_ipvlf")
+Year = 1960
+RoundTime = 2.0
+TrashAmount = 5
+facts = "[p][b]Seriousness:[/b] Plastic pollution was [b]not widely recognized[/b] as a major environmental issue. Most attention was on chemical and toxic waste dumping. Plastic was seen as a modern convenience rather than a threat.[/p][p]  [/p][p][b]Policies/Efforts:[/b] Few to none. International reports noted ocean dumping of waste, but plastics were largely ignored.[/p][p]  [/p][p][b]Relevant context:[/b] Early scientific records (like plankton surveys) began unintentionally documenting plastic debris, hinting at a growing problem.[/p]"
 metadata/_custom_type_script = "uid://bnlgkwbhif42b"
 
 [sub_resource type="Resource" id="Resource_1kutu"]
 script = ExtResource("1_ipvlf")
+Year = 1980
+RoundTime = 2.0
+TrashAmount = 10
+facts = "[p][b]Seriousness:[/b] By this decade, scientists and environmentalists began to [b]notice accumulation of plastic debris[/b] in oceans. Awareness was growing but still limited compared to other pollution crises.[/p][p]  [/p][p][b]Policies/Efforts:[/b] The [b]MARPOL Convention (Annex V, 1988)[/b] prohibited dumping plastics at sea, marking one of the first global efforts to address marine plastic pollution.[/p][p]  [/p][p][b]Relevant context:[/b] Environmental movements expanded, but plastics were still overshadowed by chemical disasters (e.g., Love Canal, Bhopal).[/p]"
 metadata/_custom_type_script = "uid://bnlgkwbhif42b"
 
 [sub_resource type="Resource" id="Resource_ldqfn"]
 script = ExtResource("1_ipvlf")
+Year = 2000
+RoundTime = 2.0
+TrashAmount = 20
+facts = "[p][b]Seriousness:[/b] Ocean plastic was now recognized as a [b]global crisis[/b], with reports of massive accumulations like the Great Pacific Garbage Patch.[/p][p]  [/p][p][b]Policies/Efforts:[/b] NGOs and international bodies pushed for bans on single-use plastics. UNEP began highlighting plastic as a global environmental priority.[/p][p]  [/p][p][b]Relevant context:[/b] Studies estimated [b]millions of tons of plastic entering oceans annually[/b], with direct impacts on marine life (entanglement, ingestion).[/p]"
 metadata/_custom_type_script = "uid://bnlgkwbhif42b"
 
 [sub_resource type="Resource" id="Resource_t37pp"]
 script = ExtResource("1_ipvlf")
+Year = 2020
+RoundTime = 2.0
+TrashAmount = 35
+facts = "[p][b]Seriousness:[/b] Plastic pollution was considered a [b]critical planetary threat[/b], with ~11 million metric tons entering oceans annually.[/p][p]  [/p][p][b]Policies/Efforts:[/b] [b]Save Our Seas 2.0 Act (U.S., 2020)[/b] strengthened marine debris programs. Global campaigns (#TeamOcean, WWF, Pew reports) pushed for systemic change. Negotiations began toward a [b]UN global plastics treaty[/b].[/p][p]  [/p][p][b]Relevant context:[/b] Scientists warned plastic flows could [b]triple by 2040[/b] without urgent action. Microplastics were detected in seafood and even human bodies.[/p]"
 metadata/_custom_type_script = "uid://bnlgkwbhif42b"
 
 [sub_resource type="Resource" id="Resource_cqj0k"]
 script = ExtResource("1_ipvlf")
+Year = 2040
+RoundTime = 2.0
+TrashAmount = 65
+facts = "[p][b]Seriousness:[/b] Without intervention, annual plastic entering oceans could [b]triple compared to 2020[/b], making it one of the defining environmental crises of the century.[/p][p]  [/p][p][b]Policies/Efforts:[/b] OECD and UNEP scenarios suggest plastic pollution could be cut by [b]up to 80%[/b] if countries adopt circular economy policies, eco-design, and strict bans. A [b]global plastics treaty[/b] is expected to be in force, aiming to eliminate leakage pathways.[/p][p]  [/p][p][b]Relevant context:[/b] Future projections highlight either a catastrophic rise in pollution or a major turnaround depending on global cooperation and innovation.[/p]"
 metadata/_custom_type_script = "uid://bnlgkwbhif42b"
 
 [resource]
