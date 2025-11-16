@@ -2,10 +2,14 @@ extends RigidBody2D
 @onready var Pivot = $Pivot
 @onready var ScoopCollider = $Pivot/Area2D/ScoopCollider
 @onready var boat = $"."
+var timer = Timer.new()
 
-# Called when the node enters the scene tree for the first time.
+# Called when the node enters the scene tree for the fi-t time.
 func _ready() -> void:
-	pass
+	add_child(timer)
+	timer.one_shot = true
+	var startTimer = 0.5
+	timer.wait_time = startTimer
 	
 	
 func _physics_process(delta:):
@@ -22,9 +26,7 @@ func _physics_process(delta:):
 	mouseangle = rad_to_deg(mouseangle)
 	Pivot.rotation_degrees = mouseangle
 	ScoopCollider.position.y = - (ScoopCollider.shape.get_height() / 2)
-	var timer = Timer.new()
-	var startTimer = 0.5
-	timer.wait_time = startTimer
+	print (timer.time_left)
 	
 	if (Input.is_action_just_pressed("LeftClick") && timer.is_stopped()) :
 		timer.start()
@@ -44,11 +46,13 @@ func _physics_process(delta:):
 	var MaxSpeed = 200
 	var friction = 4 * speed
 	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	
+	#GlobalManager.Size
+	#GlobalManager.Speed
+	#GlobalManager.Damage
 	if direction.length() > 0:
 		#current speed, float:   self.linear_velocity.length()
 		#current direcition, vector2:   self.linear_velocity.normalized()
-		self.apply_force( direction.normalized() * speed)
+		self.apply_force( direction.normalized() * speed * GlobalManager.Speed)
 	elif (self.linear_velocity.length() > friction):
 		pass
 		#self.apply_force( direction.normalized() * friction)

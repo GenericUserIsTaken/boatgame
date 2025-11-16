@@ -53,7 +53,8 @@ func _on_spawn_trash(TrashAmount : int, RoundTime : float, SurfaceTrashVisible :
 func _on_reset_level():
 	print("/tm cleared!")
 	for trash_node in trash_list:
-		trash_node.queue_free()
+		if trash_node != null:
+			trash_node.queue_free()
 		
 	trash_list.clear()
 	spawn_queue_times.clear()
@@ -69,6 +70,7 @@ func notify_removal(elem):
 	trash_list.erase(elem)
 	trash_cleared += 1
 	print("/tm after size: ", trash_list.size())
+	elem.queue_free()
 	calc_trash_percent()
 
 func calc_trash_percent():
@@ -81,11 +83,10 @@ func spawn_rand_trash(drifts_in : bool):
 	var spawn_target = Vector2(randf(), randf())
 	spawn_target.x *= (SPAWN_ZONE.x - SPAWN_BORDER_MARGIN * 2)
 	spawn_target.y *= (SPAWN_ZONE.y - SPAWN_BORDER_MARGIN * 2)
-	spawn_target += SPAWN_BORDER_MARGIN * Vector2.ONE
+	spawn_target += (SPAWN_BORDER_MARGIN * Vector2.ONE) - (SPAWN_ZONE / 2)
 	
 	var spawn_pos = spawn_target
 	if (drifts_in):
-		spawn_pos -= SPAWN_ZONE / 2
 		spawn_pos = spawn_pos.normalized() + Vector2(randf() - 0.5, randf() - 0.5) # random bs go
 		spawn_pos = spawn_pos.normalized() * (SPAWN_ZONE.length() + SPAWN_BORDER_MARGIN * 2)
 	
@@ -96,7 +97,7 @@ func spawn_rand_trash(drifts_in : bool):
 	
 	# new_trash_node.setup(sprite, health, reward_value, spawn_target, trash_manager_ref)
 	match randi_range(1, 1):
-		1: new_trash_node.setup(null, randi_range(5,7), randi_range(1,3), spawn_target, self.get_script())
+		1: new_trash_node.setup(null, randi_range(5,7), randi_range(1,3), spawn_target, self)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
