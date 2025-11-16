@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://gjafhra408kv" path="res://Sprites/boat uncropped.png" id="2_dxujh"]
 
 [node name="ShopUI" type="Control"]
-visible = false
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -158,7 +158,7 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="Panel/HBoxContainer/Panel2/VBoxContainer/Panel/HBoxContainer/CenterContainer"]
+[node name="MoneyValue" type="Label" parent="Panel/HBoxContainer/Panel2/VBoxContainer/Panel/HBoxContainer/CenterContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "$69"
@@ -191,16 +191,20 @@ alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 40
-text = "+5% Scoop Efficiency : $50"
+text = "+5 Speed : $5"
 
 [node name="Button2" type="Button" parent="Panel/HBoxContainer/Panel2/VBoxContainer/Panel2/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 40
-text = "Trash Hook : $50"
+text = "+5 Range : $5"
 
 [node name="Button3" type="Button" parent="Panel/HBoxContainer/Panel2/VBoxContainer/Panel2/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 40
-text = "+10% Scoop Range : $50"
+text = "+5 Efficiency : $5"
+
+[connection signal="button_down" from="Panel/HBoxContainer/Panel2/VBoxContainer/Panel2/VBoxContainer/Button" to="." method="_on_speed_down"]
+[connection signal="button_down" from="Panel/HBoxContainer/Panel2/VBoxContainer/Panel2/VBoxContainer/Button2" to="." method="_on_range_down"]
+[connection signal="button_down" from="Panel/HBoxContainer/Panel2/VBoxContainer/Panel2/VBoxContainer/Button3" to="." method="_on_efficiency_down"]

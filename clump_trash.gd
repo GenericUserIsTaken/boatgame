@@ -3,11 +3,12 @@ extends Node2D
 @onready var shake_timer = $ShakeTimer
 @onready var trash_sprite_pivot = $TrashSpritePivot
 @onready var trash_sprite = $TrashSpritePivot/TrashSprite
-var trash_manager_ref : Script = null
+var trash_manager_ref : Node2D = null
 
 ### trash details
 # the number of stages that are represented when losing health
 const SCALE_STAGES = 3
+const MIN_SPRITE_SCALE = 0.3
 # how much health does the trash have?
 var health = 0
 var max_health = 0
@@ -19,7 +20,7 @@ const SPAWN_DRIFT_LERP_RATE = 0.8
 var spawn_target = Vector2.ZERO
 
 ### sprite shake details
-const MAX_SHAKE_MAGNITUDE = 10
+const MAX_SHAKE_MAGNITUDE = 8
 # controls the rate that shake offsets are applied
 const SHAKE_INTERVAL = 0.05 # interval between setting new offests
 var shake_cooldown = 0
@@ -66,8 +67,8 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	if health <= 0:
 		# is destroyed
 		#GlobalManager.AddMoney(reward_value) #TODO TEMP
+		print("/tm ", self, " attempts to notify removal")
 		trash_manager_ref.notify_removal(self)
-		queue_free()
 	else:
 		# takes damage
 		update_sprite()
@@ -83,4 +84,5 @@ func update_sprite():
 		health_percent = clampf(health / float(max_health), 0, 1)
 		
 	var sprite_scale = ceil(SCALE_STAGES * health_percent) / SCALE_STAGES
+	sprite_scale = sprite_scale * (1 - MIN_SPRITE_SCALE) + MIN_SPRITE_SCALE
 	trash_sprite_pivot.scale = Vector2.ONE * sprite_scale
