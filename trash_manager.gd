@@ -6,7 +6,7 @@ var clump_trash_node = preload("res://clump_trash.tscn")
 const INITIAL_SPAWN_PERCENT = 0.4
 const SPAWN_TIME_RANGE = 0.8
 const SPAWN_ZONE = Vector2(1920, 1080)
-const SPAWN_BORDER_MARGIN = 50
+const SPAWN_BORDER_MARGIN = 160
 #const SPAWN_PROXY_MARGIN = 30 #TODO spawn spacing
 
 
@@ -22,10 +22,20 @@ var spawn_queue_times = []
 var round_time = 0
 
 
+### trash sprites
+var trash_sprites = Dictionary()
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GlobalManager.connect("SpawnTrash", _on_spawn_trash)
 	GlobalManager.connect("ResetLevel", _on_reset_level)
+	
+	print("/tm1 attempt to start sprite load:")
+	for item in ResourceLoader.list_directory("res://Sprites/Trash/"):
+		print("/tm1 loading res://Sprites/Trash/" + item)
+		var sprite = ResourceLoader.load("res://Sprites/Trash/" + item)
+		trash_sprites[item] = sprite
 
 @warning_ignore("unused_parameter")
 func _on_spawn_trash(TrashAmount : int, RoundTime : float, SurfaceTrashVisible : bool):
@@ -96,12 +106,35 @@ func spawn_rand_trash(drifts_in : bool):
 	new_trash_node.global_position = spawn_pos
 	
 	# new_trash_node.setup(sprite, health, reward_value, spawn_target, trash_manager_ref)
-	match randi_range(1, 1):
-		1: new_trash_node.setup(null, randi_range(5,7), randi_range(1,3), spawn_target, self)
+	if (randf() < 0.7):
+		# small trash
+		match randi_range(1, 8):
+			1,2:
+				var sprite = ["bottle1.png","bottle2.png","bottle3.png","bottle4.png"].pick_random()
+				new_trash_node.setup(trash_sprites[sprite], randi_range(5,7), randi_range(1,2), spawn_target, self, 1.5)
+			3:
+				var sprite = ["crate1.png","crate2.png"].pick_random()
+				new_trash_node.setup(trash_sprites[sprite], randi_range(7,10), randi_range(3,5), spawn_target, self, 2)
+			4:
+				new_trash_node.setup(trash_sprites["tire1.png"], randi_range(10,14), randi_range(4,7), spawn_target, self, 2)
+			5:
+				var sprite = ["pile1.png","pile2.png"].pick_random()
+				new_trash_node.setup(trash_sprites[sprite], randi_range(6,16), randi_range(3,8), spawn_target, self, 3)
+			6:
+				new_trash_node.setup(trash_sprites["frisbee1.png"], randi_range(8,14), randi_range(3,6), spawn_target, self, 1.5)
+			7:
+				new_trash_node.setup(trash_sprites["grate1.png"], randi_range(7,10), randi_range(3,5), spawn_target, self, 2)
+			8:
+				new_trash_node.setup(trash_sprites["net1.png"], randi_range(12,20), randi_range(7,10), spawn_target, self, 3)
+	else:
+		# large trash
+		var sprite = ["pile3.png","pile4.png","pile5.png","pile6.png"].pick_random()
+		new_trash_node.setup(trash_sprites[sprite], randi_range(24,40), randi_range(12,20), spawn_target, self,5)
+			
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# check spawn queue for scheduled trash that should drift in
 	if not spawn_queue_times.is_empty():
 		var game_time_elapsed = GlobalManager.gametime.get_wait_time() - GlobalManager.gametime.get_time_left()
