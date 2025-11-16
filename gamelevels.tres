@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="GameLevels" load_steps=8 format=3 uid="uid://fcitjywg4edh"]
 
-[ext_resource type="Script" uid="uid://bnlgkwbhif42b" path="res://level_data.gd" id="1_ipvlf"]
-[ext_resource type="Script" uid="uid://dgovintrrqr5i" path="res://GameLevels.gd" id="2_sbglp"]
+[ext_resource type="Script" path="res://level_data.gd" id="1_ipvlf"]
+[ext_resource type="Script" path="res://GameLevels.gd" id="2_sbglp"]
 
 [sub_resource type="Resource" id="Resource_sbglp"]
 script = ExtResource("1_ipvlf")
