@@ -12,6 +12,7 @@ var gametime : Timer = Timer.new()
 var gamedata : GameLevels = preload("res://gamelevels.tres")
 var currentLevelIndex : int = 0
 var shopLock : bool = true
+var shopVis : bool = false
 
 ### UI VISIBILITY SIGNALS
 signal ChangeGameUIVisibility (Visbile : bool, gamedata : LevelData)
@@ -36,21 +37,43 @@ signal UpdateTrashPercent (newvalue : float)
 ##### FUNCTIONS
 ### GAME LOGIC
 func _ready() -> void:
-	self.gametime.start(self.gamedata.levels[currentLevelIndex].RoundTime)
-	uiToGame()
-
-### LEVEL SETUP
-func uiToLevelTransition():
-	self.shopLock = true
-	self.ChangeShopUIVisibility.emit(false)
-	self.ChangeGameUIVisibility.emit(false)
-	self.ChangeTransitionUIVisibility.emit(true)
+	self.gametime.connect("timeout", _on_timer_timeout)
+	self.add_child(self.gametime)
+	start_round()
 	
-func uiToGame():
+func _on_timer_timeout():
+	self.currentLevelIndex += 1
+	#TODO DOUBLE CHECK THIS IF STATMENT
+	if self.currentLevelIndex > self.gamedata.levels.size():
+		#TODO ADD END GAME STATE
+		printerr("NEED TO END GAME DUMMY")
+	uiToLevelTransition(self.gamedata.levels[currentLevelIndex])
+	
+func start_round():
+	var currentlevel = self.gamedata.levels[currentLevelIndex]
+	self.gametime.start(currentlevel.RoundTime)
+	self.SpawnTrash.emit(currentlevel.TrashAmount,currentlevel.RoundTime,currentlevel.DrawTrashBackground)
+	uiToGame(currentlevel)
+
+### UI LOGIC
+func uiToLevelTransition(leveldata):
+	self.shopLock = true
+	self.shopVis = false
+	self.ChangeShopUIVisibility.emit(false, leveldata)
+	self.ChangeGameUIVisibility.emit(false, leveldata)
+	self.ChangeTransitionUIVisibility.emit(true, leveldata)
+	
+func uiToGame(leveldata):
 	self.shopLock = false
-	self.ChangeShopUIVisibility.emit(false)
-	self.ChangeTransitionUIVisibility.emit(false)
-	self.ChangeGameUIVisibility.emit(true)
+	self.shopVis = false
+	self.ChangeShopUIVisibility.emit(false, leveldata)
+	self.ChangeTransitionUIVisibility.emit(false, leveldata)
+	self.ChangeGameUIVisibility.emit(true, leveldata)
+	
+func toggleShopUI():
+	if not self.shopLock:
+		self.ChangeShopUIVisibility.emit(not self.shopvis)
+		self.shopvis = not self.shopVis
 	
 ### PLAYER STATS
 func EmitPlayerSignal():
