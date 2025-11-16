@@ -6,7 +6,6 @@
 [sub_resource type="Resource" id="Resource_sbglp"]
 script = ExtResource("1_ipvlf")
 Year = 1960
-RoundTime = 2.0
 TrashAmount = 5
 facts = "[p][b]Seriousness:[/b] Plastic pollution was [b]not widely recognized[/b] as a major environmental issue. Most attention was on chemical and toxic waste dumping. Plastic was seen as a modern convenience rather than a threat.[/p][p]  [/p][p][b]Policies/Efforts:[/b] Few to none. International reports noted ocean dumping of waste, but plastics were largely ignored.[/p][p]  [/p][p][b]Relevant context:[/b] Early scientific records (like plankton surveys) began unintentionally documenting plastic debris, hinting at a growing problem.[/p]"
 metadata/_custom_type_script = "uid://bnlgkwbhif42b"
