@@ -36,7 +36,8 @@ func setup(_sprite, _health, _reward_value, _spawn_target, _trash_manager_ref, _
 	self.reward_value = _reward_value
 	self.spawn_target = _spawn_target
 	trash_manager_ref = _trash_manager_ref
-	$Area2D/CollisionShape2D.shape.radius *= _hitbox_scale
+	$Area2D/CollisionShape2D.shape = CircleShape2D.new()
+	$Area2D/CollisionShape2D.shape.radius = 30 * _hitbox_scale
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -81,6 +82,6 @@ func update_sprite():
 	if max_health > 0:
 		health_percent = clampf(health / float(max_health), 0, 1)
 		
-	var sprite_scale = ceil(SCALE_STAGES * health_percent) / SCALE_STAGES
+	"""var sprite_scale = ceil(SCALE_STAGES * health_percent) / SCALE_STAGES
 	sprite_scale = sprite_scale * (1 - MIN_SPRITE_SCALE) + MIN_SPRITE_SCALE
-	trash_sprite_pivot.scale = Vector2.ONE * sprite_scale
+	trash_sprite_pivot.scale = Vector2.ONE * sprite_scale"""

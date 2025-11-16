@@ -89,6 +89,7 @@ func calc_trash_percent():
 	
 
 func spawn_rand_trash(drifts_in : bool):
+	print("/tm spawn new!")
 	# demo: https://www.desmos.com/calculator/lmssvon8ha
 	var spawn_target = Vector2(randf(), randf())
 	spawn_target.x *= (SPAWN_ZONE.x - SPAWN_BORDER_MARGIN * 2)
@@ -106,7 +107,7 @@ func spawn_rand_trash(drifts_in : bool):
 	new_trash_node.global_position = spawn_pos
 	
 	# new_trash_node.setup(sprite, health, reward_value, spawn_target, trash_manager_ref)
-	if (randf() < 0.7):
+	if (randf() < 0.9):
 		# small trash
 		match randi_range(1, 8):
 			1,2:

@@ -26,7 +26,7 @@ signal SpawnTrash (TrashAmount : int, RoundTime : float, SurfaceTrashVisible : b
 ### PLAYER STATS
 var Speed : float = 10.0
 var Damage : float = 1.0
-var Size : float = 5.0
+var Size : float = 1.0
 signal UpdatePlayerAttributes (Speed : float, Damage : float, Size : float)
 #TODO impplement abilities
 

@@ -191,19 +191,19 @@ alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 40
-text = "+5 Speed : $5"
+text = "+10% Speed : $5"
 
 [node name="Button2" type="Button" parent="Panel/HBoxContainer/Panel2/VBoxContainer/Panel2/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 40
-text = "+5 Range : $5"
+text = "+20% Range : $5"
 
 [node name="Button3" type="Button" parent="Panel/HBoxContainer/Panel2/VBoxContainer/Panel2/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 40
-text = "+5 Efficiency : $5"
+text = "+1 Efficiency : $5"
 
 [connection signal="button_down" from="Panel/HBoxContainer/Panel2/VBoxContainer/Panel2/VBoxContainer/Button" to="." method="_on_speed_down"]
 [connection signal="button_down" from="Panel/HBoxContainer/Panel2/VBoxContainer/Panel2/VBoxContainer/Button2" to="." method="_on_range_down"]

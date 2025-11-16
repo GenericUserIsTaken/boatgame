@@ -3,10 +3,8 @@ extends RigidBody2D
 @onready var ScoopCollider = $Pivot/Area2D/ScoopCollider
 @onready var boat = $"."
 var timer = Timer.new()
-const startheight = 50
-const startRad = 14
-var actheight = startheight * GlobalManager.Size
-var actRad = startRad * GlobalManager.Size
+const startheight = 250.0 * 0.5
+const startRad = 80.0 / 0.7 * 0.5
 
 
 # Called when the node enters the scene tree for the fi-t time.
@@ -15,11 +13,18 @@ func _ready() -> void:
 	timer.one_shot = true
 	var startTimer = 0.5
 	timer.wait_time = startTimer
-	ScoopCollider.shape.height = actheight
-	ScoopCollider.shape.radius = actRad
+	
 	#$Pivot/NetVizualizer.shape.height = actheight
 	#$Pivot/NetVizualizer.shape.radius = actRad
-func _physics_process(delta:):
+	
+func _physics_process(_delta):
+	
+	var actheight = startheight * GlobalManager.Size
+	var actRad = startRad * GlobalManager.Size * 0.7
+	ScoopCollider.shape.height = actheight
+	ScoopCollider.shape.radius = actRad
+	print("/boat ",ScoopCollider.shape.height," ",ScoopCollider.shape.radius)
+	
 	#flips sprite
 	if (self.linear_velocity.x > 0):
 		$Sprite2D.flip_h = false
@@ -36,7 +41,7 @@ func _physics_process(delta:):
 	
 	#print (timer.time_left)
 	
-	if (Input.is_action_just_pressed("LeftClick") && timer.is_stopped()) :
+	if (Input.is_action_pressed("LeftClick") && timer.is_stopped()) :
 		timer.start()
 		#print("ran")
 		#print("Again")

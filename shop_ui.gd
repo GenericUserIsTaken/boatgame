@@ -28,19 +28,19 @@ func checkMoney(value):
 func _on_speed_down() -> void:
 	#add money check with variable GlobalManager.money
 	if checkMoney(5):
-		GlobalManager.Speed += 5
+		GlobalManager.Speed += 1.0
 	displayMoney()
 	displayNewBoatValues()
 
 func _on_range_down() -> void:
 	if checkMoney(5):
-		GlobalManager.Size += 5
+		GlobalManager.Size += 0.2
 	displayMoney()
 	displayNewBoatValues()
 
 func _on_efficiency_down() -> void:
 	if checkMoney(5):
-		GlobalManager.Damage += 5
+		GlobalManager.Damage += 1.0
 	displayMoney()
 	displayNewBoatValues()
 
