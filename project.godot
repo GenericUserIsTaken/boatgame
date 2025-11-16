@@ -80,6 +80,7 @@ skip={
 2d_physics/layer_1="default"
 2d_physics/layer_2="trash"
 2d_physics/layer_3="player_abilities"
+2d_physics/layer_4="boat"
 
 [rendering]
 

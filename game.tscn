@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://m2vd1g1e8cw5"]
+[gd_scene load_steps=5 format=3 uid="uid://m2vd1g1e8cw5"]
 
 [ext_resource type="PackedScene" uid="uid://dxibpdcodac8g" path="res://ui.tscn" id="1_e2o6t"]
 [ext_resource type="PackedScene" uid="uid://cujkgy3ic8tnf" path="res://level.tscn" id="2_feb5d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2o6t"]
+size = Vector2(1920, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_feb5d"]
+size = Vector2(20, 1080)
 
 [node name="Game" type="Node"]
 
@@ -11,3 +17,23 @@
 
 [node name="Camera2D" type="Camera2D" parent="."]
 editor_draw_limits = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -540)
+shape = SubResource("RectangleShape2D_e2o6t")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 540)
+shape = SubResource("RectangleShape2D_e2o6t")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-960, 0)
+shape = SubResource("RectangleShape2D_feb5d")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(960, 0)
+shape = SubResource("RectangleShape2D_feb5d")

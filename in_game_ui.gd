@@ -24,6 +24,6 @@ func _on_money_changed(money):
 	$VBoxContainer/Money.text = "$%01d" % [GlobalManager.money]
 
 func _on_trash_changed(value : float):
-	var text = "{0}%".format([String.num(value, 2)])
+	var text = "{0}%".format([String.num(value*100, 2)])
 	$VBoxContainer/TrashCleared.text = text
 	
